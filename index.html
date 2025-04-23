@@ -40,9 +40,21 @@
       AOS.init();
     }
   </script>
+  <audio id="bg-music" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg" />
+</audio>
+<script>
+  const music = document.getElementById("bg-music");
+  window.addEventListener("click", () => {
+    music.play().catch(() => {}); // biar gak error di console
+  });
+</script>
   <style>
     body {
-      background-image: url('https://i.ibb.co/n8PNWXh/bg-masjid.png');
+      background-image: url('Ka'bah.jpg');
       background-size: cover;
       background-attachment: fixed;
     }
