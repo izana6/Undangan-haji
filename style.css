@@ -1,10 +1,10 @@
 body {
-  background: linear-gradient(#e0f7fa, #ffffff);
-  background-size: 400% 400%;
-  animation: gradient 20s ease infinite;
+  background: url('Ka'bah.jpg') no-repeat center center fixed;
+  background-size: cover;
+  animation: zoom 30s ease-in-out infinite;
 }
-@keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+
+@keyframes zoom {
+  0%, 100% { background-size: 100% 100%; }
+  50% { background-size: 105% 105%; }
 }
