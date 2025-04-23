@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Undangan Walimatussafar</title>
   <meta property="og:title" content="Undangan Walimatussafar Haji" />
   <meta property="og:description" content="Akhmad Kholili, Sofuroh, dan Izanatul Baroroh mengundang Anda untuk hadir." />
   <meta property="og:image" content="https://via.placeholder.com/300" />
-  <meta property="og:url" content="https://izana6.github.io/Undangan-haji" />
+  <meta property="og:url" content="https://namadomain.com/undangan" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
     body {
-      background-image: url('Ka\'bah.jpg');
+      background-image: url("Ka'bah.jpg");
       background-size: cover;
       background-attachment: fixed;
     }
   </style>
 
   <script>
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link undangan telah disalin!");
-    }
-
     function hitungMundur() {
       const target = new Date("2025-04-26T00:00:00").getTime();
       setInterval(() => {
@@ -52,25 +47,43 @@
       }
     }
 
-    window.onload = function() {
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        document.getElementById("toast").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("toast").classList.add("hidden");
+        }, 2000);
+      } catch (err) {
+        alert("Gagal menyalin link. Silakan salin manual.");
+      }
+    }
+
+    window.onload = function () {
       hitungMundur();
       AOS.init();
-
       const audio = document.getElementById("bg-audio");
       window.addEventListener("click", () => {
         audio.play().catch(() => {});
       });
-    }
+    };
   </script>
 </head>
-<body class="bg-gray-100 bg-opacity-80 text-gray-800 font-sans overflow-hidden">
+
+<body class="bg-gray-100 bg-opacity-80 text-gray-800 font-sans">
 
   <!-- Musik -->
   <audio id="bg-audio" autoplay loop>
-    <source src="https://archive.org/download/sholawat-talbiyah/Sholawat%20Talbiyah.mp3" type="audio/mpeg">
+    <source src="https://archive.org/download/sholawat-talbiyah/Sholawat%20Talbiyah.mp3" type="audio/mpeg" />
     Browser Anda tidak mendukung pemutar audio.
   </audio>
 
+  <!-- Notifikasi Toast -->
+  <div id="toast" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded hidden z-50 shadow-md">
+    ✅ Link undangan berhasil disalin!
+  </div>
+
+  <!-- Konten Undangan -->
   <div class="max-w-xl mx-auto p-4 text-center bg-white bg-opacity-90 rounded-xl shadow-lg mt-4" data-aos="fade-up">
     <h1 class="text-2xl font-bold mb-2">Undangan Walimatussafar Haji</h1>
     <p class="mb-4">Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara walimatussafar:</p>
@@ -94,8 +107,8 @@
     <div class="bg-white p-4 rounded-xl shadow mb-4" data-aos="fade-up">
       <h3 class="font-semibold text-lg">Galeri Foto</h3>
       <div class="grid grid-cols-2 gap-2 mt-2">
-        <img src="https://via.placeholder.com/150" class="rounded-lg">
-        <img src="https://via.placeholder.com/150" class="rounded-lg">
+        <img src="https://via.placeholder.com/150" class="rounded-lg" />
+        <img src="https://via.placeholder.com/150" class="rounded-lg" />
       </div>
     </div>
 
@@ -106,6 +119,5 @@
 
     <button onclick="copyLink()" class="bg-blue-500 text-white px-4 py-2 rounded" data-aos="fade-up">Bagikan Undangan</button>
   </div>
-
 </body>
 </html>
