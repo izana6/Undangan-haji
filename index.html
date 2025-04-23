@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Walimatussafar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script>
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link undangan telah disalin!");
+    }
+    function hitungMundur() {
+      const target = new Date("2025-04-26T00:00:00").getTime();
+      setInterval(() => {
+        const now = new Date().getTime();
+        const selisih = target - now;
+        const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+        const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+        const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerText = `${hari}h ${jam}j ${menit}m ${detik}d`;
+      }, 1000);
+    }
+    function toggleAudio() {
+      const audio = document.getElementById("bg-audio");
+      const btn = document.getElementById("audio-btn");
+      if (audio.paused) {
+        audio.play();
+        btn.innerText = "Pause Musik";
+      } else {
+        audio.pause();
+        btn.innerText = "Mainkan Musik";
+      }
+    }
+    window.onload = function() {
+      hitungMundur();
+      AOS.init();
+    }
+  </script>
+  <style>
+    body {
+      background-image: url('https://i.ibb.co/n8PNWXh/bg-masjid.png');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 bg-opacity-80 text-gray-800 font-sans">
+  <audio id="bg-audio" loop>
+    <source src="https://archive.org/download/sholawat-talbiyah/Sholawat%20Talbiyah.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung pemutar audio.
+  </audio>
+
+  <div class="max-w-xl mx-auto p-4 text-center bg-white bg-opacity-90 rounded-xl shadow-lg mt-4" data-aos="fade-up">
+    <h1 class="text-2xl font-bold mb-2">Undangan Walimatussafar Haji</h1>
+    <p class="mb-4">Dengan penuh syukur, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara walimatussafar:</p>
+    <h2 class="text-xl font-semibold">Akhmad Kholili, Sofuroh, dan Izanatul Baroroh</h2>
+
+    <div class="my-4">
+      <p><strong>Tanggal:</strong> 26 April 2025</p>
+      <p><strong>Lokasi:</strong> Jl. KH. Nasucha No. 31 RT 02/02, Dk. Krajan, Bumiayu</p>
+      <a href="https://maps.app.goo.gl/SMR7mbC9mbZJDUnN9" target="_blank" class="text-blue-600 underline">Lihat di Google Maps</a>
+    </div>
+
+    <div class="mb-4">
+      <button onclick="toggleAudio()" id="audio-btn" class="bg-yellow-500 text-white px-4 py-2 rounded">Mainkan Musik</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow mb-4" data-aos="fade-up">
+      <h3 class="font-semibold text-lg">Hitung Mundur Acara</h3>
+      <p id="countdown" class="text-2xl font-bold mt-2"></p>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow mb-4" data-aos="fade-up">
+      <h3 class="font-semibold text-lg">Galeri Foto</h3>
+      <div class="grid grid-cols-2 gap-2 mt-2">
+        <img src="https://via.placeholder.com/150" class="rounded-lg">
+        <img src="https://via.placeholder.com/150" class="rounded-lg">
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow mb-4" data-aos="fade-up">
+      <h3 class="font-semibold text-lg">Doa & Ucapan</h3>
+      <iframe src="https://forms.gle/oVZfSWtbQ76qHc1R7" class="w-full h-96 border rounded" loading="lazy"></iframe>
+    </div>
+
+    <button onclick="copyLink()" class="bg-blue-500 text-white px-4 py-2 rounded" data-aos="fade-up">Bagikan Undangan</button>
+  </div>
+</body>
+</html>
